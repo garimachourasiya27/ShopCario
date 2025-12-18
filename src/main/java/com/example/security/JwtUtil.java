@@ -23,7 +23,7 @@ public class JwtUtil {
         this.key = Keys.hmacShaKeyFor(secret.getBytes());
         this.expiration = expiration;
     }
-
+   //Genereate Token 
     public String generateToken(String email) {
         return Jwts.builder()
                 .setSubject(email)
@@ -32,7 +32,7 @@ public class JwtUtil {
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
     }
-
+  //Extract Email
     public String extractEmail(String token) {
         return getClaims(token).getSubject();
     }
@@ -46,6 +46,7 @@ public class JwtUtil {
         }
     }
 
+    //payload -> claims -> user deatails without password 
     private Claims getClaims(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(key)

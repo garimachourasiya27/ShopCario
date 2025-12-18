@@ -40,7 +40,7 @@ public class AuthService {
         userRepository.save(user);
         return "User registered successfully";
     }
-    
+    //login 
     public String login(LoginRequest req) {
 
         String identifier = req.getEmail();
